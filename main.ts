@@ -1,23 +1,23 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    if (receivedNumber == 1) {
-        basic.showString("A")
+input.onButtonPressed(Button.A, function () {
+    radio.sendString("pozik")
+})
+input.onButtonPressed(Button.AB, function () {
+    radio.sendString("bihotza")
+})
+radio.onReceivedString(function (receivedString) {
+    if (receivedString == "pozik") {
+        basic.showIcon(IconNames.Happy)
     }
-    if (receivedNumber == 2) {
-        basic.showString("B")
+    if (receivedString == "triste") {
+        basic.showIcon(IconNames.Sad)
     }
-    if (receivedNumber == 3) {
-        basic.showString("A+B")
+    if (receivedString == "bihotza") {
+        basic.showIcon(IconNames.Heart)
     }
     basic.pause(2000)
     basic.clearScreen()
 })
-input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(1)
-})
-input.onButtonPressed(Button.AB, function () {
-    radio.sendNumber(3)
-})
 input.onButtonPressed(Button.B, function () {
-    radio.sendNumber(2)
+    radio.sendString("triste")
 })
 radio.setGroup(1)
